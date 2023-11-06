@@ -1,0 +1,406 @@
+tead, the timestamps of the symbolic link itself are changed.
+         * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
+         * @param atime The last access time. If a string is provided, it will be coerced to number.
+         * @param mtime The last modified time. If a string is provided, it will be coerced to number.
+         */
+        function __promisify__(path: PathLike, atime: TimeLike, mtime: TimeLike): Promise<void>;
+    }
+    /**
+     * Change the file system timestamps of the symbolic link referenced by `path`.
+     * Returns `undefined`, or throws an exception when parameters are incorrect or
+     * the operation fails. This is the synchronous version of {@link lutimes}.
+     * @since v14.5.0, v12.19.0
+     */
+    export function lutimesSync(path: PathLike, atime: TimeLike, mtime: TimeLike): void;
+    /**
+     * Asynchronously changes the permissions of a file. No arguments other than a
+     * possible exception are given to the completion callback.
+     *
+     * See the POSIX [`chmod(2)`](http://man7.org/linux/man-pages/man2/chmod.2.html) documentation for more detail.
+     *
+     * ```js
+     * import { chmod } from 'fs';
+     *
+     * chmod('my_file.txt', 0o775, (err) => {
+     *   if (err) throw err;
+     *   console.log('The permissions for file "my_file.txt" have been changed!');
+     * });
+     * ```
+     * @since v0.1.30
+     */
+    export function chmod(path: PathLike, mode: Mode, callback: NoParamCallback): void;
+    export namespace chmod {
+        /**
+         * Asynchronous chmod(2) - Change permissions of a file.
+         * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
+         * @param mode A file mode. If a string is passed, it is parsed as an octal integer.
+         */
+        function __promisify__(path: PathLike, mode: Mode): Promise<void>;
+    }
+    /**
+     * For detailed information, see the documentation of the asynchronous version of
+     * this API: {@link chmod}.
+     *
+     * See the POSIX [`chmod(2)`](http://man7.org/linux/man-pages/man2/chmod.2.html) documentation for more detail.
+     * @since v0.6.7
+     */
+    export function chmodSync(path: PathLike, mode: Mode): void;
+    /**
+     * Sets the permissions on the file. No arguments other than a possible exception
+     * are given to the completion callback.
+     *
+     * See the POSIX [`fchmod(2)`](http://man7.org/linux/man-pages/man2/fchmod.2.html) documentation for more detail.
+     * @since v0.4.7
+     */
+    export function fchmod(fd: number, mode: Mode, callback: NoParamCallback): void;
+    export namespace fchmod {
+        /**
+         * Asynchronous fchmod(2) - Change permissions of a file.
+         * @param fd A file descriptor.
+         * @param mode A file mode. If a string is passed, it is parsed as an octal integer.
+         */
+        function __promisify__(fd: number, mode: Mode): Promise<void>;
+    }
+    /**
+     * Sets the permissions on the file. Returns `undefined`.
+     *
+     * See the POSIX [`fchmod(2)`](http://man7.org/linux/man-pages/man2/fchmod.2.html) documentation for more detail.
+     * @since v0.4.7
+     */
+    export function fchmodSync(fd: number, mode: Mode): void;
+    /**
+     * Changes the permissions on a symbolic link. No arguments other than a possible
+     * exception are given to the completion callback.
+     *
+     * This method is only implemented on macOS.
+     *
+     * See the POSIX [`lchmod(2)`](https://www.freebsd.org/cgi/man.cgi?query=lchmod&sektion=2) documentation for more detail.
+     * @deprecated Since v0.4.7
+     */
+    export function lchmod(path: PathLike, mode: Mode, callback: NoParamCallback): void;
+    /** @deprecated */
+    export namespace lchmod {
+        /**
+         * Asynchronous lchmod(2) - Change permissions of a file. Does not dereference symbolic links.
+         * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
+         * @param mode A file mode. If a string is passed, it is parsed as an octal integer.
+         */
+        function __promisify__(path: PathLike, mode: Mode): Promise<void>;
+    }
+    /**
+     * Changes the permissions on a symbolic link. Returns `undefined`.
+     *
+     * This method is only implemented on macOS.
+     *
+     * See the POSIX [`lchmod(2)`](https://www.freebsd.org/cgi/man.cgi?query=lchmod&sektion=2) documentation for more detail.
+     * @deprecated Since v0.4.7
+     */
+    export function lchmodSync(path: PathLike, mode: Mode): void;
+    /**
+     * Asynchronous [`stat(2)`](http://man7.org/linux/man-pages/man2/stat.2.html). The callback gets two arguments `(err, stats)` where`stats` is an `fs.Stats` object.
+     *
+     * In case of an error, the `err.code` will be one of `Common System Errors`.
+     *
+     * Using `fs.stat()` to check for the existence of a file before calling`fs.open()`, `fs.readFile()` or `fs.writeFile()` is not recommended.
+     * Instead, user code should open/read/write the file directly and handle the
+     * error raised if the file is not available.
+     *
+     * To check if a file exists without manipulating it afterwards, {@link access} is recommended.
+     *
+     * For example, given the following directory structure:
+     *
+     * ```text
+     * - txtDir
+     * -- file.txt
+     * - app.js
+     * ```
+     *
+     * The next program will check for the stats of the given paths:
+     *
+     * ```js
+     * import { stat } from 'fs';
+     *
+     * const pathsToCheck = ['./txtDir', './txtDir/file.txt'];
+     *
+     * for (let i = 0; i < pathsToCheck.length; i++) {
+     *   stat(pathsToCheck[i], (err, stats) => {
+     *     console.log(stats.isDirectory());
+     *     console.log(stats);
+     *   });
+     * }
+     * ```
+     *
+     * The resulting output will resemble:
+     *
+     * ```console
+     * true
+     * Stats {
+     *   dev: 16777220,
+     *   mode: 16877,
+     *   nlink: 3,
+     *   uid: 501,
+     *   gid: 20,
+     *   rdev: 0,
+     *   blksize: 4096,
+     *   ino: 14214262,
+     *   size: 96,
+     *   blocks: 0,
+     *   atimeMs: 1561174653071.963,
+     *   mtimeMs: 1561174614583.3518,
+     *   ctimeMs: 1561174626623.5366,
+     *   birthtimeMs: 1561174126937.2893,
+     *   atime: 2019-06-22T03:37:33.072Z,
+     *   mtime: 2019-06-22T03:36:54.583Z,
+     *   ctime: 2019-06-22T03:37:06.624Z,
+     *   birthtime: 2019-06-22T03:28:46.937Z
+     * }
+     * false
+     * Stats {
+     *   dev: 16777220,
+     *   mode: 33188,
+     *   nlink: 1,
+     *   uid: 501,
+     *   gid: 20,
+     *   rdev: 0,
+     *   blksize: 4096,
+     *   ino: 14214074,
+     *   size: 8,
+     *   blocks: 8,
+     *   atimeMs: 1561174616618.8555,
+     *   mtimeMs: 1561174614584,
+     *   ctimeMs: 1561174614583.8145,
+     *   birthtimeMs: 1561174007710.7478,
+     *   atime: 2019-06-22T03:36:56.619Z,
+     *   mtime: 2019-06-22T03:36:54.584Z,
+     *   ctime: 2019-06-22T03:36:54.584Z,
+     *   birthtime: 2019-06-22T03:26:47.711Z
+     * }
+     * ```
+     * @since v0.0.2
+     */
+    export function stat(path: PathLike, callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void): void;
+    export function stat(
+        path: PathLike,
+        options:
+            | (StatOptions & {
+                bigint?: false | undefined;
+            })
+            | undefined,
+        callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void,
+    ): void;
+    export function stat(
+        path: PathLike,
+        options: StatOptions & {
+            bigint: true;
+        },
+        callback: (err: NodeJS.ErrnoException | null, stats: BigIntStats) => void,
+    ): void;
+    export function stat(
+        path: PathLike,
+        options: StatOptions | undefined,
+        callback: (err: NodeJS.ErrnoException | null, stats: Stats | BigIntStats) => void,
+    ): void;
+    export namespace stat {
+        /**
+         * Asynchronous stat(2) - Get file status.
+         * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
+         */
+        function __promisify__(
+            path: PathLike,
+            options?: StatOptions & {
+                bigint?: false | undefined;
+            },
+        ): Promise<Stats>;
+        function __promisify__(
+            path: PathLike,
+            options: StatOptions & {
+                bigint: true;
+            },
+        ): Promise<BigIntStats>;
+        function __promisify__(path: PathLike, options?: StatOptions): Promise<Stats | BigIntStats>;
+    }
+    export interface StatSyncFn extends Function {
+        (path: PathLike, options?: undefined): Stats;
+        (
+            path: PathLike,
+            options?: StatSyncOptions & {
+                bigint?: false | undefined;
+                throwIfNoEntry: false;
+            },
+        ): Stats | undefined;
+        (
+            path: PathLike,
+            options: StatSyncOptions & {
+                bigint: true;
+                throwIfNoEntry: false;
+            },
+        ): BigIntStats | undefined;
+        (
+            path: PathLike,
+            options?: StatSyncOptions & {
+                bigint?: false | undefined;
+            },
+        ): Stats;
+        (
+            path: PathLike,
+            options: StatSyncOptions & {
+                bigint: true;
+            },
+        ): BigIntStats;
+        (
+            path: PathLike,
+            options: StatSyncOptions & {
+                bigint: boolean;
+                throwIfNoEntry?: false | undefined;
+            },
+        ): Stats | BigIntStats;
+        (path: PathLike, options?: StatSyncOptions): Stats | BigIntStats | undefined;
+    }
+    /**
+     * Synchronous stat(2) - Get file status.
+     * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
+     */
+    export const statSync: StatSyncFn;
+    /**
+     * Invokes the callback with the `fs.Stats` for the file descriptor.
+     *
+     * See the POSIX [`fstat(2)`](http://man7.org/linux/man-pages/man2/fstat.2.html) documentation for more detail.
+     * @since v0.1.95
+     */
+    export function fstat(fd: number, callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void): void;
+    export function fstat(
+        fd: number,
+        options:
+            | (StatOptions & {
+                bigint?: false | undefined;
+            })
+            | undefined,
+        callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void,
+    ): void;
+    export function fstat(
+        fd: number,
+        options: StatOptions & {
+            bigint: true;
+        },
+        callback: (err: NodeJS.ErrnoException | null, stats: BigIntStats) => void,
+    ): void;
+    export function fstat(
+        fd: number,
+        options: StatOptions | undefined,
+        callback: (err: NodeJS.ErrnoException | null, stats: Stats | BigIntStats) => void,
+    ): void;
+    export namespace fstat {
+        /**
+         * Asynchronous fstat(2) - Get file status.
+         * @param fd A file descriptor.
+         */
+        function __promisify__(
+            fd: number,
+            options?: StatOptions & {
+                bigint?: false | undefined;
+            },
+        ): Promise<Stats>;
+        function __promisify__(
+            fd: number,
+            options: StatOptions & {
+                bigint: true;
+            },
+        ): Promise<BigIntStats>;
+        function __promisify__(fd: number, options?: StatOptions): Promise<Stats | BigIntStats>;
+    }
+    /**
+     * Retrieves the `fs.Stats` for the file descriptor.
+     *
+     * See the POSIX [`fstat(2)`](http://man7.org/linux/man-pages/man2/fstat.2.html) documentation for more detail.
+     * @since v0.1.95
+     */
+    export function fstatSync(
+        fd: number,
+        options?: StatOptions & {
+            bigint?: false | undefined;
+        },
+    ): Stats;
+    export function fstatSync(
+        fd: number,
+        options: StatOptions & {
+            bigint: true;
+        },
+    ): BigIntStats;
+    export function fstatSync(fd: number, options?: StatOptions): Stats | BigIntStats;
+    /**
+     * Retrieves the `fs.Stats` for the symbolic link referred to by the path.
+     * The callback gets two arguments `(err, stats)` where `stats` is a `fs.Stats` object. `lstat()` is identical to `stat()`, except that if `path` is a symbolic
+     * link, then the link itself is stat-ed, not the file that it refers to.
+     *
+     * See the POSIX [`lstat(2)`](http://man7.org/linux/man-pages/man2/lstat.2.html) documentation for more details.
+     * @since v0.1.30
+     */
+    export function lstat(path: PathLike, callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void): void;
+    export function lstat(
+        path: PathLike,
+        options:
+            | (StatOptions & {
+                bigint?: false | undefined;
+            })
+            | undefined,
+        callback: (err: NodeJS.ErrnoException | null, stats: Stats) => void,
+    ): void;
+    export function lstat(
+        path: PathLike,
+        options: StatOptions & {
+            bigint: true;
+        },
+        callback: (err: NodeJS.ErrnoException | null, stats: BigIntStats) => void,
+    ): void;
+    export function lstat(
+        path: PathLike,
+        options: StatOptions | undefined,
+        callback: (err: NodeJS.ErrnoException | null, stats: Stats | BigIntStats) => void,
+    ): void;
+    export namespace lstat {
+        /**
+         * Asynchronous lstat(2) - Get file status. Does not dereference symbolic links.
+         * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
+         */
+        function __promisify__(
+            path: PathLike,
+            options?: StatOptions & {
+                bigint?: false | undefined;
+            },
+        ): Promise<Stats>;
+        function __promisify__(
+            path: PathLike,
+            options: StatOptions & {
+                bigint: true;
+            },
+        ): Promise<BigIntStats>;
+        function __promisify__(path: PathLike, options?: StatOptions): Promise<Stats | BigIntStats>;
+    }
+    /**
+     * Asynchronous statfs(2). Returns information about the mounted file system which contains path. The callback gets two arguments (err, stats) where stats is an <fs.StatFs> object.
+     * In case of an error, the err.code will be one of Common System Errors.
+     * @param path A path to an existing file or directory on the file system to be queried.
+     * @param callback
+     */
+    export function statfs(path: PathLike, callback: (err: NodeJS.ErrnoException | null, stats: StatsFs) => void): void;
+    export function statfs(
+        path: PathLike,
+        options:
+            | (StatFsOptions & {
+                bigint?: false | undefined;
+            })
+            | undefined,
+        callback: (err: NodeJS.ErrnoException | null, stats: StatsFs) => void,
+    ): void;
+    export function statfs(
+        path: PathLike,
+        options: StatFsOptions & {
+            bigint: true;
+        },
+        callback: (err: NodeJS.ErrnoException | null, stats: BigIntStatsFs) => void,
+    ): void;
+    export function statfs(
+        path: PathLike,
+        options: StatFsOptions | undefined,
+        callback: (err: NodeJS.ErrnoException | null, stats: StatsFs | BigIntStatsFs) => void,
+  
