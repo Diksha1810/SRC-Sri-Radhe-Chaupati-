@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiFillEye } from "react-icons/ai";
-import img from "../images/61I7vjhsJ4L.jpg";
+
 import { Link, useNavigate} from "react-router-dom";
+import img from "../images/Sri Radhe Chaupati-logos_transparent.png";
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -59,23 +60,23 @@ Navigate("/")
 
     return (
         <>
-        <div className="head">
+        <div className="bg ">
             
-                <div className="row">
-                    <div className="col-sm-6 col-lg-6">
-                        <img src={img} className="img-fluid" />
-                    </div>
+                <div className="box">
+                  
 
-                    <div className="col-sm-6 col-lg-6 my-auto p-5 bg-light">
+                    <div className=" my-auto p-5 back rounded w-25">
 
 
-                        <form className="adjust border border-dark my-auto">
-                            <h1 className="text-center text-danger">User Delete</h1>
-                            <input className="form-control" type="email" value={state?.mail} name="mail" onChange={click} placeholder="Enter your Eamil-id" />
+                    <div className="text-center">
+                            <img src={img} className="adjusting mx-auto"/>
+                            </div>
+                            <h1 className="text-center text-light">User Delete</h1>
+                            <input className="form-control mt-2" type="email" value={state?.mail} name="mail" onChange={click} placeholder="Enter your Eamil-id" />
                             {err.mail && <div className="text-danger">{err.mail}</div>}
                             <div className="input-group">
-                                <input className="form-control " type={password ? "text" : "password"} value={state?.pass1} name="pass1" onChange={click} placeholder="Enter your Password" />
-                                <div class="input-group-append">
+                                <input className="form-control mt-2 " type={password ? "text" : "password"} value={state?.pass1} name="pass1" onChange={click} placeholder="Enter your Password" />
+                                <div class="input-group-append mt-2">
                                     <span class="input-group-text" onClick={() => setPassword(!password)}>
                                         {password ? <AiFillEye /> : <AiFillEyeInvisible />}
 
@@ -84,9 +85,10 @@ Navigate("/")
                             </div>
                             {err.pass1 && <div className="text-danger">{err.pass1}</div>}
                             <br />
+                            <div className="text-danger">
                             <button type="submit " onClick={handleFormSubmit} className="btn btn-danger text-center">Delete</button>
-                            
-                        </form>
+                            </div>
+
 
                     </div>
                 </div>

@@ -7,7 +7,7 @@ function HideNav({children}){
     const location=useLocation();
   useEffect(() =>{
     console.log("this is location",location)
-     if(location.pathname==='/' || location.pathname==='/signup'||location.pathname==="/logout"){
+     if(location.pathname==='/' || location.pathname==='/signup'||location.pathname==="/logout"||location.pathname==="*"){
         setShowNavbar(false)
   
     }

@@ -1,22 +1,23 @@
-import Page from "./page";
+import Nav from "./nav";
 import HideNav from "./hide";
 import Footer from "./footer";
 function Layout({ children }) {
     return (
         <>
-        
-<HideNav>
-<Page />
-</HideNav>
+   
+
+<Nav/>
+
+
            <div className="container-fluid">   
                 <div className="content-wrapper">
                     {children}
                 </div>
-                <HideNav>
-               <Footer/>
+                </div>
+              <Footer/>
+              
                 
-              </HideNav>
-            </div>
+            
         </>
     )
 }

@@ -1,33 +1,34 @@
 import { useState } from "react";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiFillEye } from "react-icons/ai";
-import img from "../images/61I7vjhsJ4L.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import img from "../images/Sri Radhe Chaupati-logos_transparent.png";
+import { Link, } from "react-router-dom";
+import axios from "axios";
 
-function Signin() {
+function Signup() {
   const [password, setPassword] = useState(false);
   const [state, setState] = useState({});
   const [errors, setErrors] = useState({});
-const navigate = useNavigate()
+
   const validateForm = () => {
-    
+
     const { pass1, pass2, userName, mail, num } = state;
     const newErrors = {};
     let formIsValid = true
 
     // Validate full name (required)
     if (!userName) {
-         formIsValid = false  
+      formIsValid = false
       newErrors.userName = "Full name is required";
     }
     else if (userName.length < 3) {
-        formIsValid = false
-     newErrors.userName = "Enter-valid name";
-   }
+      formIsValid = false
+      newErrors.userName = "Enter-valid name";
+    }
 
     // Validate email (required and basic format)
     if (!mail) {
-        formIsValid = false
+      formIsValid = false
       newErrors.mail = "Email is required";
     } else if (!/^\S+@\S+\.\S+$/.test(mail)) {
       newErrors.mail = "Invalid email format";
@@ -35,7 +36,7 @@ const navigate = useNavigate()
 
     // Validate mobile number (required and numeric)
     if (!num) {
-        formIsValid =false
+      formIsValid = false
       newErrors.num = "Mobile number is required";
     } else if (!/^\d+$/.test(num)) {
       newErrors.num = "Invalid mobile number";
@@ -43,7 +44,7 @@ const navigate = useNavigate()
 
     // Validate password (required and minimum length)
     if (!pass1) {
-        formIsValid=false
+      formIsValid = false
       newErrors.pass1 = "Password is required";
     } else if (pass1.length < 6) {
       newErrors.pass1 = "Password must be at least 6 characters";
@@ -51,7 +52,7 @@ const navigate = useNavigate()
 
     // Validate password confirmation (must match password)
     if (pass1 !== pass2) {
-        formIsValid=false
+      formIsValid = false
       newErrors.pass2 = "Passwords do not match";
     }
 
@@ -59,38 +60,61 @@ const navigate = useNavigate()
     return formIsValid;
 
     // Check if there are any validation errors
-    
+
   };
 
   const click = (e) => {
-    setState({...state, [e.target.name]: e.target.value });
+    setState({ ...state, [e.target.name]: e.target.value });
     setErrors("")
   };
 
   const handleFormSubmit = (e) => {
-   e.preventDefault()
-  localStorage.setItem("state",JSON.stringify(state))
- 
+    e.preventDefault()
+    let data = JSON.stringify({
+      "full_name": state.userName,
+      "email": state.mail,
+      "password":state.pass1,
+      "confirm_password": state.pass2
+    });
+    
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'http://huntfish.deploywork.com:4438/api/v1/auth/sign-up',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    
+    axios.request(config)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+      localStorage.setItem("access_token",JSON.stringify(response.data.body.token));
 
-    if (validateForm()) {
-      navigate("/")
-      // Form is valid, you can proceed with submission or API request
-      console.log("Form is valid. Submitting...");
-    } else {
-      console.log("Form has validation errors. Please correct them.");
-    }
+     
+      
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    
   };
 
   return (
     <>
-      <div className="head">
-        <div className="row">
-          <div className="col-sm-6 col-lg-6">
-            <img src={img} className="img-fluid" />
-          </div>
-          <div className="col-sm-6 col-lg-6 my-auto p-5 bg-light ">
-            <form className=" border border-dark my-auto"onSubmit={handleFormSubmit}>
-              <h1 className="text-dark text-center">Welcome!!!!!</h1>
+      <div className="bg">
+        <div className="box">
+          <div className="my-auto back rounded w-25 p-5 ">
+
+
+
+            <form onSubmit={handleFormSubmit}>
+              <span ><Link to="/"><button className="btn btn-outline-primary mr-5  text light btn-lg">Signin</button> </Link>
+                <Link to="/signup"> <button className="btn btn-outline-success btn-lg">Signup </button></Link></span>
+              <div className="text-center">
+                <img src={img} className="adjusting mx-auto" />
+              </div>
               <input
                 className="form-control no-border "
                 type="text"
@@ -101,7 +125,7 @@ const navigate = useNavigate()
               />
               {errors.userName && <div className="text-danger">{errors.userName}</div>}
               <input
-                className="form-control"
+                className=" form-control mt-2"
                 type="email"
                 value={state?.mail}
                 name="mail"
@@ -110,7 +134,7 @@ const navigate = useNavigate()
               />
               {errors.mail && <div className="text-danger">{errors.mail}</div>}
               <input
-                className="form-control"
+                className=" form-control mt-2"
                 type="tel"
                 value={state?.num}
                 name="num"
@@ -120,7 +144,7 @@ const navigate = useNavigate()
               {errors.num && <div className="text-danger">{errors.num}</div>}
               <div className="input-group">
                 <input
-                  className="form-control"
+                  className=" form-control mt-2"
                   type={password ? "text" : "password"}
                   value={state.pass1}
                   name="pass1"
@@ -128,14 +152,14 @@ const navigate = useNavigate()
                   placeholder="Enter your Password"
                 />
                 <div className="input-group-append">
-                  <span className="input-group-text" onClick={() => setPassword(!password)}>
+                  <span className="input-group-text mt-2" onClick={() => setPassword(!password)}>
                     {password ? <AiFillEye /> : <AiFillEyeInvisible />}
                   </span>
                 </div>
               </div>
               {errors.pass1 && <div className="text-danger">{errors.pass1}</div>}
               <input
-                className="form-control"
+                className=" form-control mt-2"
                 type="password"
                 value={state?.pass2}
                 name="pass2"
@@ -143,10 +167,12 @@ const navigate = useNavigate()
                 placeholder="Confirm your password"
               />
               {errors.pass2 && <div className="text-danger">{errors.pass2}</div>}
-          <button type="submit"  className="btn btn-success d-flex justify-content-center">
-                Sign-up
-              </button>
-              <p className="text-primary text-center">
+              <div className="text-center">
+                <button type="submit" className="btn btn-success mt-4">
+                  Sign-up
+                </button>
+              </div>
+              <p className="text-primary text-center mt-3">
                 Already have an account? <Link to="/">Signin</Link>
               </p>
             </form>
@@ -156,4 +182,4 @@ const navigate = useNavigate()
     </>
   );
 }
-export default Signin;
+export default Signup;
