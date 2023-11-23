@@ -90,7 +90,7 @@ function Signup() {
     axios.request(config)
     .then((response) => {
       console.log(JSON.stringify(response.data));
-      localStorage.setItem("access_token",JSON.stringify(response.data.body.token));
+     
 
      
       

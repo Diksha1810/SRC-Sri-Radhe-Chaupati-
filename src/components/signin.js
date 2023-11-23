@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiFillEye } from "react-icons/ai";
 import img from "../images/Sri Radhe Chaupati-logos_transparent.png";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
@@ -22,6 +22,7 @@ function Signin() {
     setState({ ...state, [e.target.name]: e.target.value });
 
   };
+const navigate = useNavigate();
 
 
 
@@ -67,7 +68,9 @@ function Signin() {
       .then((response) => {
         console.log(JSON.stringify(response.data));
         localStorage.setItem("access_token",JSON.stringify(response.data.body.token));
-window.location.reload();
+        console.log(JSON.stringify(response.data.body.token),"response.data.body.token")
+        navigate("/Content");
+// window.location.reload();
       })
       .catch((error) => {
         console.log(error);
