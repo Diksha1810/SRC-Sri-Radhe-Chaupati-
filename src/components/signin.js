@@ -1,13 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiFillEye } from "react-icons/ai";
 import img from "../images/Sri Radhe Chaupati-logos_transparent.png";
-import { Link } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import React from 'react';
-
+import { toast } from "react-toastify";
 
 function Signin() {
   const [state, setState] = useState({
@@ -15,15 +13,14 @@ function Signin() {
     pass1: ""
   })
   const [err, setErr] = useState({})
+  const navigate = useNavigate();
 
   const [password, setPassword] = useState(false)
+
   const click = (e) => {
     setErr("");
     setState({ ...state, [e.target.name]: e.target.value });
-
   };
-
-
 
   const Validate = () => {
     const { mail, pass1 } = state;
@@ -42,6 +39,9 @@ function Signin() {
 
   }
 
+  useEffect(()=>{
+    // toast("Wow so easy !");
+  },[]);
 
   const handleFormSubmit = (e) => {
 
@@ -65,16 +65,25 @@ function Signin() {
 
     axios.request(config)
       .then((response) => {
-        console.log(JSON.stringify(response.data));
-        localStorage.setItem("access_token",JSON.stringify(response.data.body.token));
-window.location.reload();
+        let data = response.data;
+
+        // window.location.reload();
+        if (data.success) {
+          localStorage.setItem("access_token", JSON.stringify(response.data.body.token));
+          navigate('/content')
+        } 
+        else {
+          if(data.message) {
+
+            console.log(data.message)
+            toast.dismiss();
+            toast(data.message || "Oopse something went wrong")
+          }
+        }
       })
       .catch((error) => {
         console.log(error);
       });
-
-
-
 
     // if (Validate()) {
     //     console.log("form is submitted");
@@ -121,9 +130,9 @@ window.location.reload();
             </form>
           </div>
         </div>
-        <ToastContainer />
 
-      </div>
+      </div>  
+      {/* <ToastContainer /> */}
     </>
   )
 }
