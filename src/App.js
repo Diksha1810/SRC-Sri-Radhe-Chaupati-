@@ -8,7 +8,7 @@ import Layout from "./components/layout";
 import Content from "./components/content";
 import Contact from './components/contact2';
 import Chinese from './components/chinese';
-import About from "./components/about";
+
 import Tandoori from './components/tandoori';
 import South from './components/south';
 import Signup from './components/signup';
@@ -16,6 +16,7 @@ import Snacks from './components/snacks';
 import Beverages from './components/beverages';
 import Special from './components/special';
 import Error from './components/error';
+import About from './components/about2';
 
 
 
@@ -34,7 +35,7 @@ const PrivateRoutes = () => {
    <Route path="/South" element={<South />} />
    <Route path="/Snacks" element={<Snacks />} />
    <Route path="/Beverages" element={<Beverages />} />
-  
+   <Route path="/logout" element={<Logout />} />
    <Route path='/Special' element={<Special />} />
 
    <Route path="*" element={<Error/>}/>
@@ -45,7 +46,7 @@ const PrivateRoutes = () => {
 }
 function App() {
   const token = localStorage.getItem("access_token");
-  console.log(token,"dnekdneiu")
+  console.log(token,  "dnekdneiu")
   const location = useLocation();
   if (location.pathname == '/') {
     if (token!=null) {
@@ -61,7 +62,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Signin/>} />
           <Route path="/signup" element={<Signup/>} />
-          <Route path="/logout" element={<Logout />} />
+       
           <Route path='*' element={<Error/>} />
         </Routes >
       }

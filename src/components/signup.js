@@ -2,8 +2,10 @@ import { useState } from "react";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiFillEye } from "react-icons/ai";
 import img from "../images/Sri Radhe Chaupati-logos_transparent.png";
-import { Link, } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 function Signup() {
   const [password, setPassword] = useState(false);
@@ -67,7 +69,7 @@ function Signup() {
     setState({ ...state, [e.target.name]: e.target.value });
     setErrors("")
   };
-
+  const navigate = useNavigate();
   const handleFormSubmit = (e) => {
     e.preventDefault()
     let data = JSON.stringify({
@@ -90,8 +92,20 @@ function Signup() {
     axios.request(config)
     .then((response) => {
       console.log(JSON.stringify(response.data));
-        
-    })
+  
+
+      if(response.data.body){
+        navigate("/");
+        toast.success(response.data.message)
+      }
+     else{
+      toast.error(response.data.message)
+     
+      console.log("-===-==-+")
+     }
+
+    }
+    )
     .catch((error) => {
       console.log(error);
     });

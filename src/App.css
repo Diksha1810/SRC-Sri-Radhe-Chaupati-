@@ -104,3 +104,21 @@ display: none;
   height: 150px;
   align-items: center;
 }
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+.dark-theme{
+background-color: black;
+color: white;
+
+}
+.light-theme{
+  background-color: white;
+color: black;
+
+}
+
+.toggle-theme {
+  position: fixed;
+top:50%;
+  z-index: 9999;
+}

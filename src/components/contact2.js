@@ -16,20 +16,20 @@ return(
        
         <div className="col-sm-4 jumbotron">
 <ul>
-    <li className="font-weight-bold " >
+    <li className="font-weight-bold text-dark" >
     <Link to ="tel:9463749990"><span className="text-center mr-3 "><BsFillTelephoneFill size="2em"/>  </span></Link>  Call us 
         </li>
-            <li className= "mt-4 font-weight-bold">
+            <li className= "mt-4 font-weight-bold text-dark">
 
             <Link to="https://www.facebook.com/profile.php?id=100005529121740&mibextid=ZbWKwL"> <span className="text-primary mt-4 mr-3"> <FaFacebookSquare size="2em"/></span> </Link> Follow us on facebook
             </li>
-        <li className= "mt-4 font-weight-bold">
+        <li className= "mt-4 font-weight-bold text-dark">
         <Link to ="https://wa.me/9463749990"> <span className="text-success mt-4 mr-3"><BsWhatsapp size="2em"/></span></Link> Contact us via Whatsapp
     </li>
-    <li className= "mt-4 font-weight-bold">
+    <li className= "mt-4 font-weight-bold text-dark">
     <Link to="https://instagram.com/pankajabbi38?igshid=NzZlODBkYWE4Ng=="><span className="insta mt-4 mr-3"><GrInstagram size="2em"/></span></Link>Follow us on Instagram
     </li>
-    <li className= "mt-4 font-weight-bold">
+    <li className= "mt-4 font-weight-bold text-dark">
   <Link to="https://restaurant-guru.in/Shri-Sai-Chat-House-Hajipur-Punjab"> <span className="insta mt-4 mr-3"><FcGoogle size="2em"/></span> 
         </Link>
      Review us on google
@@ -47,13 +47,13 @@ return(
        
 
             <form className="form-group">
-                <label>Enter your Name </label>
+                <label className="text-dark">Enter your Name </label>
             <input type="text" className="form-control"/>
-            <label>
+            <label className="text-dark">
                 Enter Your Email-address
             </label>
             <input type="text" className="form-control"/>
-            <label >Mention your Message:</label>
+            <label className="text-dark">Mention your Message:</label>
             <textarea class="form-control" rows="5" col="5" ></textarea>
             <div className="text-center mt-2">   <button type="submit" className="btn btn-warning btn-lg ">Send</button></div>
          

@@ -1,43 +1,62 @@
-  
-import chinese1 from "../json/chinese.json";
 import { useState } from "react";
-
-import { Link } from "react-router-dom";
+import products from "../json/chinese.json";
+import { useSelector, useDispatch } from "react-redux";
+import countReducer from "../reducer/incReducer";
+import { DECREMENT, INCREMENT } from "../action";
 function Chinese() {
 
-const[data,setData] = useState(chinese1)
-console.log(data,"data")
+  const [data, setData] = useState(products)
+
+  const dispatch = useDispatch()
+  const counter = useSelector((state) => state.countReducer)
+  const increment = (id) => {
+    dispatch({
+      type: INCREMENT,
+      payload: id
+    })
+  }
+
+  const decrement = (id) => {
+    dispatch({
+      type: DECREMENT,
+      payload: id
+    })
+  }
+
   return (
     <>
-    {
-data.map((item)=>{
-  return ( 
-<div className="jumbotron jumbotron-fluid d-inline-flex ">
+      {
+        data.map((item) => {
+          const count = counter[item.id] || 0;
 
-    < div class="card ad  mr-3" style={{width: "20rem",height:"35rem" }} >
-<div Key={item.id}>
-<img class="card-img-top img2" src={item.img} alt="Card image" />
-<div class="card-body ">
-<h4 class="card-title">{item.name}</h4>
-<p class="card-text">{item.price}</p>
+          return (
+            <div className="jumbotron jumbotron-fluid d-inline-flex ">
 
+              < div className="card ad mt-4 mr-3" style={{ width: "20rem", height: "35rem" }} >
+                <div Key={item.id}>
+                  <img className="card-img-top img2" src={item.img} alt="Card image" />
+                  <div className="card-body ">
+                    <h4 className="card-title text-dark">{item.name}</h4>
+                    
+                    <p className="card-text font-weight-bold text-dark">{item.price}</p>
+                    
+                      <button className="btn btn-danger"onClick={()=>decrement(item.id)}>-</button><span className="text-dark">Quantity{count}</span> <button className="btn btn-danger" onClick={()=>increment(item.id)}>+</button>
+                  
+                 
+                       <p>{item.description}</p>
 
+                    <a href="#" className="btn btn-primary">Order here </a>
+                  </div>
+                </div>
+              </div >
+            </div>
 
-
-<Link to="#" class="btn btn-primary">Order here</Link>
-
-</div>
-</div >
-
-  </div>
-
-  </div>
-  )
-})
-    }
+          )
+        })
+      }
 
 
     </>
   )
 }
-export default Chinese;
+      export default Chinese;

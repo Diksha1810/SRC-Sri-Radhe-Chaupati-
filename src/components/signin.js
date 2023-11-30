@@ -66,10 +66,17 @@ const navigate = useNavigate();
 
     axios.request(config)
       .then((response) => {
-        console.log(JSON.stringify(response.data));
         localStorage.setItem("access_token",JSON.stringify(response.data.body.token));
-        console.log(JSON.stringify(response.data.body.token),"response.data.body.token")
-        navigate("/Content");
+        console.log(JSON.stringify(response.data));
+
+        if(response.data.body){
+          navigate("/Content");
+          toast.success(response.data.message)
+        }
+        else{
+          toast.error(response.data.message)
+        }
+      
 // window.location.reload();
       })
       .catch((error) => {

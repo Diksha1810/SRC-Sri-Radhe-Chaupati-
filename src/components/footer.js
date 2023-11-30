@@ -16,7 +16,7 @@ return(
         </div>
     
         <div className="col-sm-2">
-            <h3>Get to Know Us</h3>
+            <h3 className="text-dark">Get to Know Us</h3>
            < ul className=" navbar-nav ml-auto mr-3 list-inline">
                         <li className="text-muted mr-4 list-inline-item">
                             <Link to="/content" className="text-dark">Home</Link>
@@ -35,19 +35,19 @@ return(
                     </ul>
         </div>
      <div className="col-sm-2">
-        <h3>Follow us</h3>
+        <h3 className="text-dark">Follow us</h3>
         <ul>
        
            <li className="text-dark ">  <Link to ="https://wa.me/9463749990"><span className="text-success "><BsWhatsapp size=""/></span>
                
                 </Link>  Whatsapp</li>
-           <li className="mt-2">
+           <li className=" mt-2 text-dark">
           <Link to="https://www.facebook.com/profile.php?id=100005529121740&mibextid=ZbWKwL"><span className="text-primary"><BiLogoFacebookSquare/></span> </Link> Facebook
             </li>
-           <li className="mt-2"><Link to="https://instagram.com/pankajabbi38?igshid=NzZlODBkYWE4Ng=="><span className="insta" ><BsInstagram/></span> </Link>Instagram</li>
-           <li className="mt-2">
+           <li className=" mt-2 text-dark"><Link to="https://instagram.com/pankajabbi38?igshid=NzZlODBkYWE4Ng=="><span className="insta" ><BsInstagram/></span> </Link>Instagram</li>
+           <li className=" mt-2 text-dark">
             <Link to ="tel:9463749990" ><span><BiPhoneOutgoing/></span></Link>Calling</li>
-            <li className= "mt-2 ">
+            <li className= " mt-2 text-dark ">
   <Link to="https://restaurant-guru.in/Shri-Sai-Chat-House-Hajipur-Punjab"> <span className=""><FcGoogle size=""/></span> 
         </Link>
      Review us on google
@@ -60,8 +60,8 @@ return(
         </form>
      </div>
      <div className="col-sm-2">
-        <h3>About us</h3>
-        <p>We never Compromise with our Qulaity.We deal with best quality since 2018</p>
+        <h3 className="text-dark">About us</h3>
+        <p className="text-dark">We never Compromise with our Qulaity.We deal with best quality since 2018</p>
        
         <p className="text-success font-weight-bold">100% pure Veg Quality</p>
      </div>
