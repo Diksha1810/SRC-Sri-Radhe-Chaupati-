@@ -15,7 +15,7 @@ return(
     <div className="row">
        
         <div className="col-sm-4 jumbotron">
-<ul>
+<ul className="text-dark">
     <li className="font-weight-bold " >
     <Link to ="tel:9463749990"><span className="text-center mr-3 "><BsFillTelephoneFill size="2em"/>  </span></Link>  Call us 
         </li>
@@ -46,7 +46,7 @@ return(
         <div className="col-sm-7 jumbotron">
        
 
-            <form className="form-group">
+            <form className="form-group text-dark">
                 <label>Enter your Name </label>
             <input type="text" className="form-control"/>
             <label>

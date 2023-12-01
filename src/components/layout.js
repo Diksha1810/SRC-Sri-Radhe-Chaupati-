@@ -1,12 +1,14 @@
 import Nav from "./nav";
 import HideNav from "./hide";
 import Footer from "./footer";
+import Toggle from "./toggle";
 function Layout({ children }) {
     return (
         <>
    
 
 <Nav/>
+<Toggle/>
 
 
            <div className="container-fluid">   

@@ -16,7 +16,7 @@ return(
         </div>
     
         <div className="col-sm-2">
-            <h3>Get to Know Us</h3>
+            <h3 className="text-dark">Get to Know Us</h3>
            < ul className=" navbar-nav ml-auto mr-3 list-inline">
                         <li className="text-muted mr-4 list-inline-item">
                             <Link to="/content" className="text-dark">Home</Link>
@@ -35,8 +35,8 @@ return(
                     </ul>
         </div>
      <div className="col-sm-2">
-        <h3>Follow us</h3>
-        <ul>
+        <h3 className="text-dark">Follow us</h3>
+        <ul className="text-dark">
        
            <li className="text-dark ">  <Link to ="https://wa.me/9463749990"><span className="text-success "><BsWhatsapp size=""/></span>
                
@@ -60,8 +60,8 @@ return(
         </form>
      </div>
      <div className="col-sm-2">
-        <h3>About us</h3>
-        <p>We never Compromise with our Qulaity.We deal with best quality since 2018</p>
+        <h3 className="text-dark">About us</h3>
+        <p className="text-dark">We never Compromise with our Qulaity.We deal with best quality since 2018</p>
        
         <p className="text-success font-weight-bold">100% pure Veg Quality</p>
      </div>

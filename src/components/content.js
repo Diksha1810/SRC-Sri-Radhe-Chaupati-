@@ -67,23 +67,23 @@ function Content() {
                         <img src={img8} className="img-fluid " />
                     </div>
                     <div className="col-sm-6 col-lg-6 my-auto  ">
-                        <h1 className="text-dark ">Masala-malai chaap</h1>
-                        <h5 className="text-dark ">
+                        <h1 className=" ">Masala-malai chaap</h1>
+                        <h5 className=" ">
                             Our best seller and most-loved item by customers is masala-malai chaap
                         </h5>
                         <h3 className="text-warning mt-3">Today's Special offer :1 coke(250ml) free with every masala-malai chaap order</h3>
-                        <h3 className="text-dark mt-5">To avail this offer<Link to="/Special"><button className=" btn btn-danger ml-3 ">Order Now</button></Link></h3>
+                        <h3 className=" mt-5">To avail this offer<Link to="/Special"><button className=" btn btn-danger ml-3 ">Order Now</button></Link></h3>
                     </div>
                 </div>
                 <div className="row mt-5">
 
                     <div className="col-sm-6 col-lg-6 my-auto">
-                        <h1 className="mx-auto text-dark ">Bhalla-papadi chaat</h1>
-                        <h5 className="text-dark mt-4">"People who love to eat are always the best people." </h5>
+                        <h1 className="mx-auto  ">Bhalla-papadi chaat</h1>
+                        <h5 className=" mt-4">"People who love to eat are always the best people." </h5>
                         <h3 className="text-warning">
                             So,Made your mood dark and happy <span className="text-dark"><VscSmiley /></span></h3>
 
-                        <h3 className="text-dark mt-3">
+                        <h3 className=" mt-3">
                             So Try our most liked Chaat<button className="btn btn-danger ml-3 hov">Order Now</button>
                         </h3>
                     </div>

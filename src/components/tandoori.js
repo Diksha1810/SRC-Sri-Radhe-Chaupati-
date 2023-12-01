@@ -1,38 +1,57 @@
 import { useState } from "react";
 import products from "../json/tandoori.json";
 
+import { INCREMENT } from "../action";
+import { DECREMENT } from "../action";
 
-function Tandoori(){
-const[data,setData]=useState(products)
-return (
+// ... (imports)
+
+function Tandoori() {
+  const [data, setData] = useState(products);
+  const dispatch = useDispatch();
+
+  const counters = useSelector((state) => state.countReducer);
+
+  const increment = (id) => {
+    dispatch({
+      type: INCREMENT,
+      payload: id,
+    });
+  };
+
+  const decrement = (id) => {
+    dispatch({
+      type: DECREMENT,
+      payload: id,
+    });
+  };
+
+  return (
     <>
-    {
-data.map((item)=>{
-  return ( 
-    <div class="jumbotron jumbotron-fluid d-inline-flex ">
+      {data.map((item) => {
+        const id = item.id;
+        const count = counters[id] || 0;
 
-    < div class="card ad mt-4 mr-3" style={{width: "20rem",height:"35rem" }} >
-<div Key={item.id}>
-<img class="card-img-top img2" src={item.img} alt="Card image" />
-<div class="card-body ">
-<h4 class="card-title">{item.name}</h4>
-<p class="card-text ">{item.price}</p>
-<p>{item.description}</p>
-<a href="#" class="btn btn-primary">Order here </a>
-</div>
-</div>
-</div >
-</div>
-  
-  )
-})
-    }
-
-
+        return (
+          <div class="jumbotron jumbotron-fluid d-inline-flex ">
+            <div class="card ad mt-4 mr-3" style={{ width: "20rem", height: "35rem" }}>
+              <div key={id}>
+                {/* ... (other card content) */}
+                <button onClick={() => decrement(id)}>-</button>
+                {count}
+                <button onClick={() => increment(id)}>+</button>
+                {/* ... (other card content) */}
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </>
-  )
+  );
 }
-export default Tandoori
+
+export default Tandoori;
+
 
 
     
