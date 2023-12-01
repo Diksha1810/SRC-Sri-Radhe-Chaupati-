@@ -1,6 +1,6 @@
 import { useState } from "react";
 import products from "../json/tandoori.json";
-
+import {useSelector ,useDispatch}from "red"
 import { INCREMENT } from "../action";
 import { DECREMENT } from "../action";
 
