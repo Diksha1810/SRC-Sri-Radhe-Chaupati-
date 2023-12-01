@@ -1,8 +1,8 @@
 import { useState } from "react";
 import products from "../json/tandoori.json";
-import {useSelector ,useDispatch}from "red"
-import { INCREMENT } from "../action";
-import { DECREMENT } from "../action";
+import{useSelector,useDispatch} from "react-redux";
+
+import { INCREMENT,DECREMENT } from "../action/action";
 
 // ... (imports)
 

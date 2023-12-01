@@ -55,7 +55,7 @@ function Signin() {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: 'http://huntfish.deploywork.com:4438/api/v1/auth/login',
+      url: 'http://192.168.146.82:4000/login',
       headers: {
         'Content-Type': 'application/json',
 
@@ -68,8 +68,8 @@ function Signin() {
         let data = response.data;
 
         // window.location.reload();
-        if (data.success) {
-          localStorage.setItem("access_token", JSON.stringify(response.data.body.token));
+        if (data.status == 'success') {
+          localStorage.setItem("access_token", JSON.stringify(data.token));
           navigate('/content')
         } 
         else {
