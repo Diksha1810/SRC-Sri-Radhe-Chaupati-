@@ -15,10 +15,7 @@ function About() {
                         “Good food will always welcome you back with a smile.”</h1>
                        <span><h1 className="text-center">You can also connect and read about us through google:</h1></span> 
                        <div className="text-center"><FcGoogle size="3em"/><Link to="https://restaurant-guru.in/Shri-Sai-Chat-House-Hajipur-Punjab"> Visit on google </Link></div>
-                  
-                        
-
-                    <img className="img-fluid mx-auto d-block " src={img} /> 
+                 <img className="img-fluid mx-auto d-block " src={img} /> 
                     </div>
  <h1 className="Display-2 text-center ">
                         "The secret of success in life is to eat what you like and let the food fight it out inside."</h1>

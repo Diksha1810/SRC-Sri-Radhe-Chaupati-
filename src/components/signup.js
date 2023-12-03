@@ -70,16 +70,18 @@ function Signup() {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     let data = JSON.stringify({
-      full_name: state.userName,
+      first_name: state.userName,
+      last_name: state.userName,
       email: state.mail,
       password: state.pass1,
-      confirm_password: state.pass2,
+      mobile: state.num
+      // confirm_password: state.pass2,
     });
 
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://huntfish.deploywork.com:4438/api/v1/auth/sign-up",
+      url: 'http://192.168.146.82:4000/register',
       headers: {
         "Content-Type": "application/json",
       },

@@ -16,6 +16,7 @@ import Snacks from "./components/snacks";
 import Beverages from "./components/beverages";
 import Special from "./components/special";
 import Error from "./components/error";
+import AddFood from "./components/Addfood";
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -46,6 +47,7 @@ const PrivateRoutes = () => {
           <Route path="/South" element={<South />} />
           <Route path="/Snacks" element={<Snacks />} />
           <Route path="/Beverages" element={<Beverages />} />
+          <Route path="/add_food" element={<AddFood />} />
 
           <Route path="/Special" element={<Special />} />
 
