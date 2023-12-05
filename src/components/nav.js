@@ -19,10 +19,13 @@ function Nav() {
                
                 <nav className="navbar navbar-expand-sm   abc" aria-label="Offcanvas navbar large">
                     <div className="container-fluid">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
-          aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
 
                     <Link to="/content"> <img className="img1" src={img} /></Link>
                  
@@ -63,6 +66,8 @@ function Nav() {
      
                <span className="text-dark ml-2 text-primary"><PiShoppingCartSimpleThin size="2em" /></span>
                </div>
+               </div>
+
 </nav>
 
          
