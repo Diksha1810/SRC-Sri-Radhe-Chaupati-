@@ -10,7 +10,7 @@ return(
     <>
 
         <div className="abc">
-    <div className="row mt-3 p-5">
+    <div className="row mx-0 mt-3 p-5">
         <div className="col-sm-2 ">
 <Link to="/content"><img className="img-fluid " src={logo}/></Link>
         </div>

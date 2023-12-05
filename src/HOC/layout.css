@@ -1,0 +1,4 @@
+.noScrollbar::-webkit-scrollbar {
+    /* height: 3px; */
+    display:none;
+}

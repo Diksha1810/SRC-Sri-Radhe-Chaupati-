@@ -14,7 +14,7 @@ function Addfood() {
 
   return (
     <div>
-      <div className="row justify-content-cenmmbnnter">
+      <div className="row justify-content-center">
         <form className="form-group" name="foodList" multipart>
           <div className="">
             Name:

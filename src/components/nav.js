@@ -34,16 +34,7 @@ function Nav() {
 
                
                 <div class={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="">
-  
-                    {/* <Link to="/" className="navbar-brand ml-auto"><img src={img1} classname=" bca " /></Link> */}
-                
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-
-
-                      
-                   <input className="form-control w-50" type="text" placeholder="search here" /> 
-                      
-                    <ul className=" navbar-nav ml-auto mr-3 list-inline">
+                    <ul className=" navbar-nav ml-auto mr-3 list-inline d-inline">
                         <li className="text-muted mr-3 ml-4 list-inline-item">
                             <Link to="/content" className="text-dark">Home</Link>
                         </li>
@@ -54,27 +45,28 @@ function Nav() {
                             <Link to="/Form" className="text-dark mr-3">Orders</Link>
                         </li>
                         <li className="text-warning mr-3 list-inline-item">
-                            <Link to="/about" className="text-dark mr-3">About</Link>
+                            <Link to="/about" className="text-dark mr-2">About</Link>
                         </li>
 
                     </ul>
-           
-<span className="text-dark ml-2"><IoIosNotificationsOutline size="2em" /></span>    
+               
 
- <div className="dropdown text-danger">
- 
-<PiUserSquareThin size="2em"/>
+                <span className="text-dark ml-2"><IoIosNotificationsOutline size="2em" /></span>
 
-<div class="dropdown-content">
- <p className="text-danger" onClick={logout}>Logout</p>
-  <Link to="/logout" className="text-danger">Delete user</Link>
+                <div className="dropdown text-danger d-inline">
 
-</div>
-</div>
-     
-               <span className="text-dark ml-2 text-primary"><PiShoppingCartSimpleThin size="2em" /></span>
+                    <PiUserSquareThin size="2em" />
+
+                    <div class="dropdown-content ">
+                        <p className="text-danger" onClick={logout}>Logout</p>
+                        <Link to="/logout" className="text-danger">Delete user</Link>
+
+                    </div>
+                </div>
+
+                <span className="text-dark ml-2 text-primary d-inline"><PiShoppingCartSimpleThin size="2em" /></span>
                </div>
-               </div>
+               
 
 </nav>
 
