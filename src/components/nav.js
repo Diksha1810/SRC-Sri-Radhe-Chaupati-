@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-
+import { useState } from "react";
+import {FiAlignJustify} from "react-icons/fi"
 import { PiShoppingCartSimpleThin } from "react-icons/pi";
 import img from "../images/Sri Radhe Chaupati-logos_transparent.png";
 import { PiUserSquareThin } from "react-icons/pi";
@@ -20,13 +21,19 @@ function Nav() {
     return (
         <>
                
-                <nav className="navbar navbar-expand-sm   abc" aria-label="Offcanvas navbar large">
-                    <div className="container-fluid">
-                   
-            
+               <nav className="navbar navbar-expand-lg   abc" >
+                <Link to="/content"> <img className="img1" src={img} /></Link>
+                <input className="form-control w-50" type="text" placeholder="search here" />
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"onClick={handleNavCollapse}>
+                    <span class=""><FiAlignJustify size="2em"/></span>
+                </button>
 
-                    <Link to="/content"> <img className="img1" src={img} /></Link>
-                 
+
+
+
+               
+                <div class={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="">
   
                     {/* <Link to="/" className="navbar-brand ml-auto"><img src={img1} classname=" bca " /></Link> */}
                 
