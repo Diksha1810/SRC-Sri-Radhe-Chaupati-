@@ -8,7 +8,10 @@ import { PiUserSquareThin } from "react-icons/pi";
 import {IoIosNotificationsOutline} from "react-icons/io";
 
 function Nav() {
- 
+
+  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+
+    const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
     const navigate = useNavigate();
     const logout = () => {
       localStorage.removeItem("access_token")
@@ -19,19 +22,17 @@ function Nav() {
                
                 <nav className="navbar navbar-expand-sm   abc" aria-label="Offcanvas navbar large">
                     <div className="container-fluid">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-
+                   
+            
 
                     <Link to="/content"> <img className="img1" src={img} /></Link>
                  
   
                     {/* <Link to="/" className="navbar-brand ml-auto"><img src={img1} classname=" bca " /></Link> */}
-                    
+                
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
+
                       
                    <input className="form-control w-50" type="text" placeholder="search here" /> 
                       
