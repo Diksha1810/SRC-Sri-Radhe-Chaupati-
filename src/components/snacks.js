@@ -23,7 +23,8 @@ function Snacks() {
                                         </div>
                                     </div>
                                 </div >
-                            </div>
+                                </div>
+                
                         </>
                     )
                 })

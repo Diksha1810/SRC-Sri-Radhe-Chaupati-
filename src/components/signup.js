@@ -81,7 +81,7 @@ function Signup() {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: 'http://192.168.146.82:4000/register',
+      url: 'http://localhost:4000/register',
       headers: {
         "Content-Type": "application/json",
       },
@@ -97,7 +97,7 @@ function Signup() {
         if (data.success && data.code == 200) {
           console.log(JSON.stringify(response.data));
           localStorage.setItem("access_token", JSON.stringify(data.body.token));
-          navigate("/Content");
+          navigate("/");
         } else {
           toast(data.message);
         }

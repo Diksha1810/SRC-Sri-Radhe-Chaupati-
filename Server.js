@@ -7,8 +7,8 @@ const uploader = require("base64-image-upload");
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
 const privateKey = "W6iNDVallRODSnnPIjhB";
-const { checkToken } = require("./middleware"); 
-0// var multer = require("multer");
+const { checkToken } = require("./middleware");
+0; // var multer = require("multer");
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -236,6 +236,7 @@ app.post("/additem", function (req, res) {
       sql,
       [name, type, price, image, category],
       function (err, result) {
+        console.log(err,result)
         if (result.affectedRows) {
           res.send({ success: true, status: "Item Added Successfully" });
         }
@@ -246,6 +247,39 @@ app.post("/additem", function (req, res) {
     console.log(error);
   }
 });
+
+app.get("/additem", function (req, res) {
+  try {
+    // const { name, type, price, image, category } = req.body;
+
+    let sql = `select * from food`;
+
+    connection.query(
+      sql,
+      [],
+      function (err, result) {
+        console.log(err,result)
+        if (result) {
+          res.send({ success: true,result, status: "Item Added Successfully" });
+        }
+        console.log(err, result);
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+})
+
+
+
+// app.post("/login_new", function (req, res) {
+//   let bodybulk = req.body;
+//   console.log("hello");
+//   var query = `SELECT * FROM users where email='${req.body.email}' AND password='${req.body.password}'`;
+//   connection.query(query, function (err, result) {
+//     console.log(result)
+//   });
+// });
 
 app.use(function (req, res, next) {
   next(createError(404));
@@ -262,4 +296,6 @@ app.use(function (err, req, res, next) {
   });
 });
 
+
 app.listen("4000", () => console.log(4000));
+
