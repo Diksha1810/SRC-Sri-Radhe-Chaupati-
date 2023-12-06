@@ -1,56 +1,50 @@
 import { useState } from "react";
 import products from "../json/tandoori.json";
-import{useSelector,useDispatch} from "react-redux";
+import { Link } from "react-router-dom";
+import Layout from '../HOC/Layout'
+import CardItems from "../commons/CardItems";
 
-import { INCREMENT,DECREMENT } from "../action/action";
+// import{useSelector,useDispatch} from "react-redux";
+
+// import { INCREMENT,DECREMENT } from "../action/action";
 
 // ... (imports)
 
 function Tandoori() {
   const [data, setData] = useState(products);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const counters = useSelector((state) => state.countReducer);
+  // const counters = useSelector((state) => state.countReducer);
 
-  const increment = (id) => {
-    dispatch({
-      type: INCREMENT,
-      payload: id,
-    });
-  };
+   const increment = (id) => {
+  //   dispatch({
+  //     type: INCREMENT,
+  //     payload: id,
+  //   });
+   };
 
-  const decrement = (id) => {
-    dispatch({
-      type: DECREMENT,
-      payload: id,
-    });
-  };
+   const decrement = (id) => {
+  //   dispatch({
+  //     type: DECREMENT,
+  //     payload: id,
+  //   });
+   };
 
   return (
     <>
       {data.map((item) => {
         const id = item.id;
-        const count = counters[id] || 0;
+        // const count = counters[id] || 0;
 
         return (
-          <div class="jumbotron jumbotron-fluid d-inline-flex ">
-            <div class="card ad mt-4 mr-3" style={{ width: "20rem", height: "35rem" }}>
-              <div key={id}>
-                {/* ... (other card content) */}
-                <button onClick={() => decrement(id)}>-</button>
-                {count}
-                <button onClick={() => increment(id)}>+</button>
-                {/* ... (other card content) */}
-              </div>
-            </div>
-          </div>
+          <CardItems {...item} api="/additem" type="get"/>
         );
       })}
     </>
   );
 }
 
-export default Tandoori;
+export default Layout(Tandoori);
 
 
 
