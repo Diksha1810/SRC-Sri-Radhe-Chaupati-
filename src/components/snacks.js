@@ -7,7 +7,7 @@ function Snacks() {
     return (
         <>
           {data.map((item) => {
-            return <CardItems {...item} />;
+            return <CardItems  name="Snacks" {...item} />;
           })}
         </>
       );

@@ -9,7 +9,7 @@ function Chaat(){
             {
                 data.map((item) => {
                     return (
-                       <CardItems {...item}/>
+                       <CardItems  name="Chaat" {...item}/>
 
                     )
                 })

@@ -10,7 +10,7 @@ function Beverages() {
                 data.map((item) => {
                     return (
                         <>
-                          <CardItems {...item}/>
+                          <CardItems  name="Beverages" {...item}/>
 
                         </>
                     )

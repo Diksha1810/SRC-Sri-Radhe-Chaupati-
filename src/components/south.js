@@ -7,7 +7,7 @@ function South() {
   return (
     <>
       {data.map((item) => {
-        return <CardItems {...item} />;
+        return <CardItems  name="South" {...item} />;
       })}
     </>
   );

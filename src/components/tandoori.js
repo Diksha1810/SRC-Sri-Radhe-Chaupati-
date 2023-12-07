@@ -37,7 +37,7 @@ function Tandoori() {
         // const count = counters[id] || 0;
 
         return (
-          <CardItems {...item} api="/additem" type="get"/>
+          <CardItems  name="Tandoori" {...item} api="/additem" type="get"/>
         );
       })}
     </>

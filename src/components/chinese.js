@@ -9,11 +9,11 @@ function Chinese() {
   console.log(data, "data");
   return (
     <>
-      {data.map((item) => {
-        return (
-          <CardItems {...item}/>
-        );
-      })}
+      {/* {data.map((item) => { */}
+        {/* return ( */}
+          <CardItems  name="Chinese" />
+        {/* ); */}
+      {/* })} */}
     </>
   );
 }

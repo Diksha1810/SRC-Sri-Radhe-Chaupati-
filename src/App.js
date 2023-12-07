@@ -21,6 +21,8 @@ import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
+
+
 const PrivateRoutes = () => {
   const token = localStorage.getItem("access_token");
   console.log(token, "dnekdneiu");
@@ -48,9 +50,7 @@ const PrivateRoutes = () => {
           <Route path="/Snacks" element={<Snacks />} />
           <Route path="/Beverages" element={<Beverages />} />
           <Route path="/add_food" element={<AddFood />} />
-
           <Route path="/Special" element={<Special />} />
-
           <Route path="*" element={<Error />} />
         </Routes>
       </Layout>
