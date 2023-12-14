@@ -9,6 +9,7 @@ function CardItems(props) {
   const [products,setProducts] = useState([props]);
   const addToCart = (product) => {
     dispatch(add(product));
+    
   };
   
 
