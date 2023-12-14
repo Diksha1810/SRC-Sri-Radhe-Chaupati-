@@ -8,8 +8,6 @@ function Layout(Component) {
         <Component {...props} />;
       </div>
     );
-
   };
 }
-
 export default Layout;

@@ -2,8 +2,8 @@ import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Chaat from "./components/chaat";
-import Logout from "./components/logout";
-import Signin from "./components/signin";
+import Logout from "./login/logout";
+import Signin from "./login/signin";
 import Layout from "./components/layout";
 import Content from "./components/content";
 import Contact from "./components/contact2";
@@ -11,12 +11,13 @@ import Chinese from "./components/chinese";
 import About from "./components/about";
 import Tandoori from "./components/tandoori";
 import South from "./components/south";
-import Signup from "./components/signup";
+import Signup from "./login/signup";
 import Snacks from "./components/snacks";
 import Beverages from "./components/beverages";
 import Special from "./components/special";
 import Error from "./components/error";
 import AddFood from "./components/Addfood";
+import Cart from "./components/Cart";
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -51,6 +52,7 @@ const PrivateRoutes = () => {
           <Route path="/Beverages" element={<Beverages />} />
           <Route path="/add_food" element={<AddFood />} />
           <Route path="/Special" element={<Special />} />
+          <Route path= "/Cart" element={<Cart/>}/>
           <Route path="*" element={<Error />} />
         </Routes>
       </Layout>

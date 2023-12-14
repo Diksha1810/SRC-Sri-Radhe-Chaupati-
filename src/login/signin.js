@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiFillEye } from "react-icons/ai";
-import img from "../images/Sri Radhe Chaupati-logos_transparent.png";
+import img from "../images/Sri Radhe Chaupati-logos_transparent.png"
 import { Link, useNavigate } from "react-router-dom";
 import React from 'react';
 import { toast } from "react-toastify";
