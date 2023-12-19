@@ -54,7 +54,7 @@ return(
             </label>
             <input type="text" className="form-control"/>
             <label >Mention your Message:</label>
-            <textarea class="form-control" rows="5" col="5" ></textarea>
+            <textarea className="form-control" rows="5" col="5" ></textarea>
             <div className="text-center mt-2">   <button type="submit" className="btn btn-warning btn-lg ">Send</button></div>
          
             </form>

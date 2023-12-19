@@ -76,8 +76,8 @@ Navigate("/")
                             {err.mail && <div className="text-danger">{err.mail}</div>}
                             <div className="input-group">
                                 <input className="form-control mt-2 " type={password ? "text" : "password"} value={state?.pass1} name="pass1" onChange={click} placeholder="Enter your Password" />
-                                <div class="input-group-append mt-2">
-                                    <span class="input-group-text" onClick={() => setPassword(!password)}>
+                                <div className="input-group-append mt-2">
+                                    <span className="input-group-text" onClick={() => setPassword(!password)}>
                                         {password ? <AiFillEye /> : <AiFillEyeInvisible />}
 
                                     </span>

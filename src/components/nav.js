@@ -32,7 +32,7 @@ function Nav() {
           placeholder="search here"
         />
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
@@ -41,12 +41,12 @@ function Nav() {
           aria-label="Toggle navigation"
           onClick={handleNavCollapse}
         >
-          <span class="">
+          <span className="">
             <FiAlignJustify size="2em" />
           </span>
         </button>
         <div
-          class={`${isNavCollapsed ? "collapse" : ""} navbar-collapse`}
+          className={`${isNavCollapsed ? "collapse" : ""} navbar-collapse`}
           id=""
         >
           <ul className=" navbar-nav ml-auto mr-3 list-inline d-inline">
@@ -79,7 +79,7 @@ function Nav() {
           <div className="dropdown text-danger d-inline">
             <PiUserSquareThin size="2em" />
 
-            <div class="dropdown-content ">
+            <div className="dropdown-content ">
               <p className="text-danger" onClick={logout}>
                 Logout
               </p>
@@ -89,9 +89,9 @@ function Nav() {
             </div>
           </div>
 
-         <Link to ="/Cart"><button type="button" class="btn btn-">
+         <Link to ="/Cart"><button type="button" className="btn btn-">
             <PiShoppingCartSimpleThin size="2em" />
-            <span class="badge badge-light">{cartProducts.length}</span>
+            <span className="badge badge-light">{cartProducts.length}</span>
           </button></Link> 
         </div>
       </nav>

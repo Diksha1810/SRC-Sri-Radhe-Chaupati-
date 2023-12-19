@@ -23,7 +23,8 @@ function CardItems(props) {
           <div  className="card-body ">
            {item.name && <h4  className="card-title text-dark">{item.name}</h4>}
             {item.price && <p  className="card-text font-weight bold text-dark">&#x20B9;{item.price}</p>} 
-            <Link to="#"  className="btn btn-primary"onClick={()=>addToCart(item)}>
+            <h3></h3>
+            <Link to="/Cart"  className="btn btn-primary"onClick={()=>addToCart(item)}>
               Order here
               </Link>
           </div>

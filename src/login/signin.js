@@ -111,8 +111,8 @@ function Signin() {
               {err.mail && <div className="text-danger">{err.mail}</div>}
               <div className="input-group">
                 <input className="form-control  mt-2 " type={password ? "text" : "password"} value={state?.pass1} name="pass1" onChange={click} placeholder="Enter your Password" />
-                <div class="input-group-append">
-                  <span class="input-group-text mt-2" onClick={() => setPassword(!password)}>
+                <div className="input-group-append">
+                  <span className="input-group-text mt-2" onClick={() => setPassword(!password)}>
                     {password ? <AiFillEye /> : <AiFillEyeInvisible />}
 
                   </span>
